@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:XamarinAdventCalendarApp.ViewModels"
+             xmlns:cells="clr-namespace:XamarinAdventCalendarApp.Cells"
+             x:Class="XamarinAdventCalendarApp.Views.PublicationView"
+             Title="Publication List"
+             mc:Ignorable="d">
+
+    <ContentPage.BindingContext>
+        <vm:PublicationViewModel/>
+    </ContentPage.BindingContext>
+    
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <Button Grid.Row="2"
+                    Margin="5"
+                    BackgroundColor="ForestGreen"
+                    Text="Export data to excel"
+                    TextColor="White"
+                    CornerRadius="5"
+                    Command="{Binding ExportToExcelCommand}"/>
+
+            <ListView Grid.Row="1"
+                      RowHeight="150"
+                      SeparatorVisibility="None"
+                      CachingStrategy="RecycleElement"
+                      ItemsSource="{Binding Publications}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <cells:PublicationViewCell />
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
