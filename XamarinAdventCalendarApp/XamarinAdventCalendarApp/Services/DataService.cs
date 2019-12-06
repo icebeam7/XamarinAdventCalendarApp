@@ -26,7 +26,7 @@ namespace XamarinAdventCalendarApp.Services
         {
             try
             {
-                var response = await client.GetAsync(Constants.JsonBin);
+                var response = await client.GetAsync(Constants.Endpoint);
 
                 if (response.IsSuccessStatusCode)
                 {
